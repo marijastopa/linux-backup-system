@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- Label - unique identifier for this job -->
+    <key>Label</key>
+    <string>com.user.backup</string>
+    
+    <!-- Program to run -->
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>/usr/local/bin/backup.sh</string>
+    </array>
+    
+    <!-- Environment variables -->
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>BACKUP_CONFIG_FILE</key>
+        <string>HOME_PLACEHOLDER/.backup/backup.conf</string>
+        <key>PATH</key>
+        <string>/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+    </dict>
+    
+    <!-- Run daily at midnight -->
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Hour</key>
+        <integer>0</integer>
+        <key>Minute</key>
+        <integer>0</integer>
+    </dict>
+    
+    <!-- Alternative schedules (comment out the above and uncomment one below):
+    
+    Run at 2:30 AM daily:
+    <dict>
+        <key>Hour</key>
+        <integer>2</integer>
+        <key>Minute</key>
+        <integer>30</integer>
+    </dict>
+    
+    Run every 6 hours:
+    Multiple StartCalendarInterval entries:
+    <array>
+        <dict>
+            <key>Hour</key>
+            <integer>0</integer>
+            <key>Minute</key>
+            <integer>0</integer>
+        </dict>
+        <dict>
+            <key>Hour</key>
+            <integer>6</integer>
+            <key>Minute</key>
+            <integer>0</integer>
+        </dict>
+        <dict>
+            <key>Hour</key>
+            <integer>12</integer>
+            <key>Minute</key>
+            <integer>0</integer>
+        </dict>
+        <dict>
+            <key>Hour</key>
+            <integer>18</integer>
+            <key>Minute</key>
+            <integer>0</integer>
+        </dict>
+    </array>
+    -->
+    
+    <!-- Standard output and error logs -->
+    <key>StandardOutPath</key>
+    <string>HOME_PLACEHOLDER/.backup/launchd-stdout.log</string>
+    
+    <key>StandardErrorPath</key>
+    <string>HOME_PLACEHOLDER/.backup/launchd-stderr.log</string>
+    
+    <!-- Run even when user is not logged in (requires sudo) -->
+    <!-- Remove this if you only want backups when logged in -->
+    <!-- <key>RunAtLoad</key>
+    <true/> -->
+    
+    <!-- Nice level (lower priority) -->
+    <key>Nice</key>
+    <integer>10</integer>
+    
+    <!-- Process type (background) -->
+    <key>ProcessType</key>
+    <string>Background</string>
+    
+    <!-- Working directory -->
+    <key>WorkingDirectory</key>
+    <string>HOME_PLACEHOLDER</string>
+</dict>
+</plist>
